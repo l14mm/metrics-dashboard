@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  redis:
+    container_name: redis
+    image: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis:/data
+    restart: always
+  # twitter-go:
+  #   build: twitter-go
+  #   container_name: twitter-go
+  #   volumes:
+  #     - ./twitter-go:/app
+  #   restart: on-failure
+  #   depends_on:
+  #     - redis
