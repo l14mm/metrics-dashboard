@@ -9,6 +9,15 @@ services:
     volumes:
       - ./redis:/data
     restart: always
+
+  dashboard:
+    container_name: dashboard
+    build: react-metrics-dashboard
+    command: npm start
+    volumes:
+      - ./react-metrics-dashboard/src:/usr/src/app/src
+    ports:
+      - 3000:3000
   # twitter-go:
   #   build: twitter-go
   #   container_name: twitter-go
