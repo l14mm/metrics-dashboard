@@ -76,7 +76,7 @@ func main() {
 	pong, err := redisClient.Ping().Result()
 	fmt.Println(pong, err)
 
-	words := [...]string{"hello", "the", "be", "to", "today"}
+	words := [...]string{"hello", "the", "be", "to", "today", "morning", "evening", "afternoon", "night"}
 
 	// If a tweet contains any of the key words, increment its key in redis
 	demux.Tweet = func(tweet *twitter.Tweet) {
@@ -84,7 +84,7 @@ func main() {
 		for i := 0; i < len(words); i++ {
 			if strings.Contains(text, words[i]) {
 				fmt.Println(words[i])
-				err := redisClient.Incr(words[i]).Err()
+				err := redisClient.Incr("keyword{word=\"" + words[i] + "\"}").Err()
 				if err != nil {
 					panic(err)
 				}

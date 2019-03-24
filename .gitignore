@@ -1,5 +1,8 @@
 conf.json
 redis/
+prometheus/data/
+env/
+.vscode
 
 # dependencies
 node_modules/
