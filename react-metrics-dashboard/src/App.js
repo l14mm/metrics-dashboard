@@ -3,6 +3,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
+import Dashboard from "./Components/Dashboard";
 
 const theme = createMuiTheme({
   palette: {
@@ -23,8 +24,10 @@ class App extends Component {
       <React.Fragment>
         <MuiThemeProvider theme={theme}>
           <CssBaseline />
-          <Header search={() => this.search} />
-          <main style={{ textAlign: "center" }}>Hello World!</main>
+          <Header />
+          <main>
+            <Dashboard />
+          </main>
           <Footer />
         </MuiThemeProvider>
       </React.Fragment>
