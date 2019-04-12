@@ -1,63 +1,34 @@
 import React from "react";
 import { VictoryChart, VictoryLine, VictoryTheme } from "victory";
-import { Button, withStyles } from "@material-ui/core";
+import { withStyles } from "@material-ui/core";
 
 const styles = {
   root: {
     textAlign: "center"
-  },
-  button: {
-    fontSize: "16px"
   }
 };
 
-const Graph = ({ classes, metrics, setTime }) => {
+const myTheme = VictoryTheme.default;
+// myTheme.charcoal = "#252525";
+
+const Graph = ({ classes, data, startTime }) => {
   return (
-    metrics && (
+    data && (
       <div className={classes.root}>
-        <Button
-          color="primary"
-          className={classes.button}
-          value={1}
-          onClick={setTime()}
+        <VictoryChart
+          // theme={VictoryTheme.material}
+          theme={myTheme}
+          // domainPadding={5}
+          // minDomain={{
+          //   x: new Date().setMinutes(new Date().getMinutes() - 100)
+          // }}
+          // minDomain={{ y: 651149056 }}
+          // animate={{ duration: 500 }}
+          // charcoal="#FF0000"
+          // gray="#FF0000"
         >
-          1m
-        </Button>
-        <Button
-          color="primary"
-          className={classes.button}
-          value={5}
-          onClick={setTime()}
-        >
-          5m
-        </Button>
-        <Button
-          className={classes.button}
-          color="primary"
-          value={10}
-          onClick={setTime()}
-        >
-          10m
-        </Button>
-        <Button
-          className={classes.button}
-          color="primary"
-          value={30}
-          onClick={setTime()}
-        >
-          30m
-        </Button>
-        <Button
-          className={classes.button}
-          color="primary"
-          value={60}
-          onClick={setTime()}
-        >
-          1h
-        </Button>
-        <VictoryChart theme={VictoryTheme.material} animate={{ duration: 500 }}>
           <VictoryLine
-            data={metrics}
+            data={data}
             events={[
               {
                 target: "data",
@@ -77,7 +48,7 @@ const Graph = ({ classes, metrics, setTime }) => {
                     return [
                       {
                         target: "data",
-                        mutation: () => ({ style: { width: 30 } })
+                        mutation: () => ({ style: { width: 50 } })
                       }
                     ];
                   },
